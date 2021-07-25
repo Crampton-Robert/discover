@@ -3,11 +3,10 @@
 // This sample shows creation of a [Card] widget that shows album information
 // and two actions.
 
-import 'package:discover/action_button.dart';
-import 'package:discover/make_an_event.dart';
+import 'package:discover/discover/make_an_event.dart';
 import 'package:flutter/material.dart';
 
-import 'cards.dart';
+import 'discover/card_list.dart';
 
 void main() => runApp(const MyApp());
 
@@ -35,8 +34,23 @@ class MyStatelessWidget extends StatelessWidget {
     return Stack(
       children: [
 
-        MyCard(),
-        ActionButton(),
+        MyCardList(),
+        Align(
+          alignment: Alignment.bottomRight,
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: FloatingActionButton(
+              child: Icon(Icons.add),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MakeACard()
+                  ),
+                );
+              },
+            ),
+          ),
+        ),
       ],
 
     );
